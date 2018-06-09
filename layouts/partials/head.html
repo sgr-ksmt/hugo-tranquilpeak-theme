@@ -45,7 +45,7 @@
     <meta property="og:url" content="{{ .URL }}">
     <meta property="og:site_name" content="{{ .Site.Title }}">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content=""{{ with .Title }}{{ . }}{{ else }}{{ .Site.Title }}{{ end }}""}>
+    <meta name="twitter:title" content="{{ with .Title }}{{ . }}{{ else }}{{ .Site.Title }}{{ end }}">
     <meta name="twitter:description" content="{{ if .Description }}{{ .Description }}{{ else if .IsPage }}{{ .Summary }}{{ else }}{{ .Site.Params.description }}{{ end }}">
     {{ with .Site.Author.twitter }}
       <meta name="twitter:creator" content="@{{ . }}">
@@ -61,14 +61,14 @@
       {{ end }}
     {{ end }}
 
-    {{ if .Scratch.Get "gravatarEmail" }}
-      <meta property="og:image" content="//www.gravatar.com/avatar/{{ (md5 (.Scratch.Get "gravatarEmail")) | urlize }}?s=640">
-    {{ else if .Site.Author.picture }}
-      <meta property="og:image" content="{{ .Site.Author.picture | absURL }}">
-    {{ end }}
-
     {{ with .Params.thumbnailImage }}
-      <meta property="og:image" content="{{ . | absURL }}">
+    <meta property="og:image" content="{{ . | absURL }}">
+    {{ else }}
+      {{ if .Scratch.Get "gravatarEmail" }}
+    <meta property="og:image" content="//www.gravatar.com/avatar/{{ (md5 (.Scratch.Get "gravatarEmail")) | urlize }}?s=640">
+      {{ else if .Site.Author.picture }}
+    <meta property="og:image" content="{{ .Site.Author.picture | absURL }}">
+      {{ end }}
     {{ end }}
     {{ with .Params.coverImage }}
       <meta property="og:image" content="{{ . | absURL }}">
