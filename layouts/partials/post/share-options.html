@@ -6,7 +6,7 @@
         {{ if (not (or (eq .name "Hatena") (eq .name "Google+"))) }}
           <a class="share-option-btn" target="new" href="{{ printf .url (substr (querify "x" (print $.Title " " $.Permalink)) 2) }}">
         {{ else }}
-          <a class="share-option-btn" target="new" href="{{ printf .url (substr (querify "x" $.Permalink) 2) }}">
+          <a class="share-option-btn" target="new" href="{{ printf .url (substr $.Permalink 2) }}">
         {{ end }}
           <i class="fa {{ .icon }}"></i><span>{{ printf (i18n "global.share_on") .name }}</span>
         </a>
