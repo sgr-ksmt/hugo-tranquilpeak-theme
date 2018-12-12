@@ -59,7 +59,7 @@
             {{ if (not (eq .name "Hatena")) }}
               <a class="post-action-btn btn btn--default" target="new" href="{{ printf .url (print $.Title " " $.Permalink) }}">
             {{ else }}
-              <a class="post-action-btn btn btn--default" target="new" href="{{ printf .url (print $.Permalink "&title=" $.Title }}">
+              <a class="post-action-btn btn btn--default" target="new" href="{{ printf .url (print $.Permalink "&title=" $.Title) }}">
             {{ end }}
               <i class="fa {{ .icon }}"></i>
             </a>
