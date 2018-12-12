@@ -3,10 +3,10 @@
   <ul class="share-options">
       {{ range .Site.Params.sharingOptions }}
       <li class="share-option">
-        {{ if (not (or (eq .name "Hatena") (eq .name "Google+"))) }}
+        {{ if (not (eq .name "Hatena")) }}
           <a class="share-option-btn" target="new" href="{{ printf .url (substr (querify "x" (print $.Title " " $.Permalink)) 2) }}">
         {{ else }}
-          <a class="share-option-btn" target="new" href="{{ printf .url ($.Permalink) }}">
+          <a class="share-option-btn" target="new" href="{{ printf .url (print $.Permalink "&title=" $.Title) }}">
         {{ end }}
           <i class="fa {{ .icon }}"></i><span>{{ printf (i18n "global.share_on") .name }}</span>
         </a>
