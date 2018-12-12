@@ -56,10 +56,10 @@
         </li>
         {{ range .Site.Params.sharingOptions }}
           <li class="post-action hide-xs">
-            {{ if (not (or (eq .name "Hatena") (eq .name "Google+"))) }}
+            {{ if (not (eq .name "Hatena")) }}
               <a class="post-action-btn btn btn--default" target="new" href="{{ printf .url (print $.Title " " $.Permalink) }}">
             {{ else }}
-              <a class="post-action-btn btn btn--default" target="new" href="{{ printf .url $.Permalink }}">
+              <a class="post-action-btn btn btn--default" target="new" href="{{ printf .url (print $.Permalink "&title=" $.Title }}">
             {{ end }}
               <i class="fa {{ .icon }}"></i>
             </a>
