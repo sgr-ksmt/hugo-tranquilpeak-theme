@@ -12,3 +12,4 @@ static/css/*
 !static/css/hatena-fa.css
 !static/css/prism.js
 !static/css/prism.css
+!gist.css
